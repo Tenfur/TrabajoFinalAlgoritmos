@@ -1,0 +1,12 @@
+﻿  Menu.cpp
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(32): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(91): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(99): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(108): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(113): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(125): warning C4018: '>': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(138): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(174): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(40): warning C4101: 'resp': variable local sin referencia
+  Menu.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
+  TrabajoFInalhito22.vcxproj -> C:\Users\Paolo\source\repos\TrabajoFInalhito22\Debug\TrabajoFInalhito22.exe

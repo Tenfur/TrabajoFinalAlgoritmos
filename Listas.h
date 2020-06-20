@@ -86,7 +86,6 @@ public:
 			}
 			aux = aux->sig;
 			else {
-
 			}
 		} while (band == false);
 	}*/

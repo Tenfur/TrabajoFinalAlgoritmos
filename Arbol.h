@@ -1,3 +1,4 @@
+
 #pragma once
 #include <iostream>
 #include <functional>
@@ -34,7 +35,7 @@ private:
 		}
 	}
 
-	void destruir(Nodo<T> & nodo) {
+	void destruir(Nodo<T> *&nodo) {
 		if (nodo != nullptr) {
 			destruir(nodo->izquierda);
 			destruir(nodo->derecha);
@@ -60,6 +61,33 @@ private:
 		}
 	}
 
+	//void mayor(Nodo<T> *nodo, T dato, bool & encontrado) {
+	//	if (nodo == nullptr) {
+	//		encontrado = false;
+	//	}
+	//	else {
+	//		if (nodo->dato == dato) {
+	//			encontrado = true;
+	//			cout << nodo->dato;
+	//		}
+	//		else if (dato <= nodo->dato) {
+	//			buscar(nodo->izquierda, dato, encontrado);
+	//		}
+	//		else {
+	//			buscar(nodo->derecha, dato, encontrado);
+	//		}
+	//	}
+	//}
+	int mayor(Nodo<T>* nodo) {
+		if (nodo->derecha == nullptr) return nodo->dato;
+		else
+			return mayor(nodo->derecha);
+	}
+	int minimo(Nodo<T>* nodo) {
+		if (nodo->derecha == nullptr) return nodo->dato;
+		else
+			return mayor(nodo->izquierda);
+	}
 	void enOrden(Nodo<T> * nodo) {
 		if (nodo != nullptr) {
 			enOrden(nodo->izquierda);
@@ -85,4 +113,12 @@ public:
 	void enOrden() {
 		enOrden(raiz);
 	}
+	int mayor() {
+		 return mayor(raiz);
+	}
+	int menor() {
+		return menor(raiz);
+	}
+
 };
+
