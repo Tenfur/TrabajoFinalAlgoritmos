@@ -16,7 +16,7 @@ private:
 		Nodo<T> * izquierda;
 		Nodo(T d) {
 			dato = d;
-			derecha = izquierda = nullptr; // chequear si esta sintaxis está bien
+			derecha = izquierda = nullptr; 
 		}
 	};
 	Nodo<T> *raiz;
