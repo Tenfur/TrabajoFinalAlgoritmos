@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <vector>
 #include <fstream>
 #include <sstream>
@@ -10,58 +11,79 @@ using namespace std;
 
 class Database {
 	private:
-		list<ListaD<string>*>* indx = new list<ListaD<string>*>();
-		vector<vector<string>> mibd;
+		ArbolAVL<vector<string>*>* abbF;
+		ArbolAVL<vector<string>*>* abbC;
+		vector<vector<string>*>*mibd;
+		ifstream archivo;
+		string cadena;
+		string nombre;
+		char separador;
+		int nCol;
 	public:
-		void separarDatos(string nombre, string separador) {
-			ifstream archivo; 
-			string cadena;
+		Database() {
+			nCol = 0;
+			mibd = new vector<vector<string>*>();
+			abbF = new ArbolAVL<vector<string>*>;
+			abbC = new ArbolAVL<vector<string>*>;
+		}
+		void lectura() {
+			nombre += ".csv";
 			archivo.open(nombre);
 			while (getline(archivo, cadena)) {
 				stringstream ss(cadena);
-				cout << cadena << endl;
+				dividirCampos(ss);
 			}
-			_getch();
 		}
+		void dividirCampos(istream& registro) {
+			auto compCol1 = [=](vector<string> *a, vector<string> *b)->bool {
+				return a->at(nCol).compare(b->at(nCol)) < 0;
+			};
+			string tmp;
+			vector<string> *fila = new vector < string>;
+			while (getline(registro, tmp, separador)) {
+				fila->push_back(tmp);
+			}
+			mibd->push_back(fila);
+			abbF->insertar(fila, compCol1);
+		}
+		void mostrarNumeroColumnasFilas() {
+			cout << "Numero de filas: " << mibd->size() << endl;
+			cout << "Numero de columnas: " << mibd->at(0)->size() << endl;
+		}
+		void mostrarFilas() {
+			for (int i = 0; i < mibd->size(); i++) {
+				for (int j = 0; j < mibd->at(i)->size(); j++) {
+					cout << mibd->at(i)->at(j) << " ";
+				}
+				cout << endl;
+			}
+		}
+		void indexarFilaXCol(int nroColumna) {
+			//comparar con lambdas para cualquier columna
+			auto compCol1 = [=](vector<string> *a, vector<string> *b)->bool {
+				return (a->at(nroColumna).compare(b->at(nroColumna))) < 0;
+			};
 
-
+			for (int i = 0; i < mibd->size(); ++i) {
+				vector<string>* reg = mibd->at(i);
+				abbF->insertar(reg, compCol1); //Indexando las filas por la columna
+			}
+		}
+		void listarBD() {
+			auto imprimir = [](vector<string> *a) {
+				cout << a->at(0) << "\t" << a->at(1) << "\t" << a->at(2) << endl;
+			};
+			abbF->enOrden(imprimir);
+		}
+		void borrar() {
+			abbF->borrarTodo();
+		}
+		void setNombre(string nombre) {
+			this->nombre = nombre;
+		}
+		void setSeparador(char separador) {
+			this->separador = separador;
+		}
+	
 
 };
-//struct MiniBD {
-//	ifstream archivo;
-//	vector<vector<string>> mibd; /// el primer vector guarda las filas, el segundo guarda las columnas 
-//	string cadena;
-//	vector<string> indice;
-//	Arbol <vector<vector<string>>*> *arbolIndexacion; // esto se crea para cada columna 
-//	Arbol<int> *arbol = new Arbol<int>();
-//
-//	MiniBD() {
-//		arbolIndexacion = new Arbol <vector<vector<string>>*>;
-//	}
-//	void lectura(string nombre) {
-//		archivo.open(nombre);
-//		while (getline(archivo, cadena)) {
-//			stringstream ss(cadena);
-//			dividirCampos(ss);
-//			//cout << cadena <<endl; 
-//		}
-//	}
-//
-//	void dividirCampos(istream& registro) { // el registro es el llamdo "archivo" del paremetro de la linea 157
-//		vector<string> filas;
-//		string temp;
-//		string isoCode, continente, localizacion, date, totalCases, nuevosCasos, totalMuertes, nuevasMuertes, poblacion;
-//		int Npoblacion;
-//		while (getline(registro, temp)) {
-//			filas.push_back(temp); // aca se insertan las columnas			
-//		}
-//		mibd.push_back(filas);// aca se insertan las filas 
-//	}
-//	void mostrarValores() {
-//		cout << "Cantidad de filas: " << mibd.size() << endl;
-//		cout << "Cantidad de columnas: " << mibd[0].size() << endl;
-//
-//	}
-//
-//
-//};

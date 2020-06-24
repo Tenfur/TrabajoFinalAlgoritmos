@@ -21,7 +21,8 @@ int menu() {
 	cout << " 4 - Filtrado de datos por columnas " << endl;
 	cout << " 5 - Ordenamiento de datos por columnas " << endl;
 	cout << " 6 - Exportacion de datos a archivos planos con diferente formato " << endl;
-	cout << " 7 - Salir" << endl;
+	cout << " 7 - Altura" << endl;
+	cout << " 8 - Salir" << endl;
 	cout << "     Ingrese opcion: "; cin >> opcion;
 	cout << endl;
 	Console::Clear();
@@ -33,7 +34,6 @@ void selecion_de_datos_por_columnas(vector<string> nombresColumnas) {
 		cout << (i + 1) << "." << nombresColumnas.at(i) << "   ";
 	}
 }
-
 
 int main() {
 	//Listas de listas
@@ -47,10 +47,15 @@ int main() {
 	//Arboles - vectores de arboles
 	auto crInt = [](int a, int b) { return a < b; };
 	auto crS = [](string a, string b) { return a.compare(b) < 0; };
-	vector<Arbol<string>*>arboles;
-	Arbol <string> *arbolito;
+	vector<ArbolAVL<string>*>arboles;
+	ArbolAVL <string> *arbolito;
 	vector <int> seleccionDeColumnas; // un vector auxiliar para poder guardar el numero de la columna que desea visualizar en el usuario
-	Arbol <int> *arbolInt;
+	ArbolAVL <int> *arbolInt;
+
+	//Database
+	Database *objetoDataBase = new Database();
+	string nombreArchivo;
+	char separador;
 
 
 	int r;
@@ -66,7 +71,13 @@ int main() {
 			cin >> opcion;
 			if (opcion == 1) {
 				system("cls");
-				cout << "Proximamente!" << endl;
+				cout << "Ingrese el nombre del archivo: ";
+				cin >> nombreArchivo;
+				objetoDataBase->setNombre(nombreArchivo);
+				cout << "Ingrese separador: ";
+				cin >> separador;
+				objetoDataBase->setSeparador(separador);
+				cout << "Proceso terminado!" << endl;
 				_getch();
 			}
 			else if (opcion == 2) {
@@ -82,14 +93,13 @@ int main() {
 				cout << "Todas las columnas fueron registradas correctamente!";
 				_getch();
 			}
-
 			break;
 		case 2:
 			cout << "\t Registro" << endl;
 			cout << "Cuantos usuarios desea registrar: ";
 			cin >> numUsuarios;
 			for (int i = 0; i < nombresColumnas.size(); i++) { //Aquí se crean los árboles de acuerdo al numero de columnas
-				arbolito = new Arbol<string>();
+				arbolito = new ArbolAVL<string>();
 				arboles.push_back(arbolito); // guardamos en el vector de arboles, tantos arboles como columnas existan 
 			}
 			for (int i = 0; i < numUsuarios; i++) {
@@ -99,21 +109,12 @@ int main() {
 				for (int j = 0; j < nombresColumnas.size(); j++) {
 					cout << nombresColumnas.at(j) << ": ";
 					cin >> datoColumna;
-					(arboles)[j]->insertar(datoColumna, crS); //  !esto está "mal", falta agregar lo mismo, pero para datos numericos¡
+					(arboles)[j]->insertar(datoColumna, crS);  //Guarda todos los datos como strings
 					lista->push_back(datoColumna);
 				}
 				indx->push_back(lista);
 			}
-
-			for (int i = 0; i < nombresColumnas.size(); i++) {
-				cout << nombresColumnas.at(i) << " ";
-			}
-			cout << endl;
-			for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
-				for (int i = 0; i < nombresColumnas.size(); i++) {
-					cout << (*it)->at(i) << "   ";
-				}cout << endl;
-			}
+			cout << "Todos los usuarios fueron registrados correctamente!" << endl;
 			_getch();
 			break;
 		case 3:
@@ -125,9 +126,6 @@ int main() {
 			} while (numeroColumnas > nombresColumnas.size());
 			system("cls");
 			cout << "\t Seleccion de datos por columnas" << endl;
-			/*for (int i = 0; i < nombresColumnas.size(); i++) {
-				cout << (i + 1) << "." << nombresColumnas.at(i) << "   ";
-			}*/
 			selecion_de_datos_por_columnas(nombresColumnas); // hemos cambiado esto, por un funcion void
 			cout << endl;
 			for (int i = 0; i < numeroColumnas; i++) {
@@ -135,15 +133,15 @@ int main() {
 				cin >> numeroColumna;
 				seleccionDeColumnas.push_back(numeroColumna - 1);
 			}
+			system("cls");
 			for (int i = 0; i < seleccionDeColumnas.size(); i++) {
-
 				for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
-					cout << "nombre encontrado: "; (arboles)[seleccionDeColumnas.at(i)]->buscar((*it)->at(seleccionDeColumnas.at(i))); cout << endl;
-					cout << endl;
+					(arboles)[seleccionDeColumnas.at(i)]->buscar((*it)->at(seleccionDeColumnas.at(i))); 
+					cout << " ";
 				}
+				cout << endl;
 			}
 			seleccionDeColumnas.clear();
-			cout << endl;
 			_getch();
 			break;
 		case 4:
@@ -165,12 +163,12 @@ int main() {
 					system("cls");
 					cout << "\t Mayor " << endl;
 					selecion_de_datos_por_columnas(nombresColumnas); cout << endl;
-					for (int i = 0; i < 1; i++) { //Deben ser dos
+					for (int i = 0; i < 2; i++) { //Deben ser dos
 						cout << "Ingrese el numero de la columna que quiere filtrar: ";
 						cin >> numeroColumna;
 						seleccionDeColumnas.push_back(numeroColumna - 1);
 					}
-					arbolInt = new Arbol<int>();
+					arbolInt = new ArbolAVL<int>();
 					for (int i = 0; i < seleccionDeColumnas.size(); i++) {
 						for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
 							int num = atoi((*it)->at(seleccionDeColumnas.at(i)).c_str());
@@ -213,18 +211,35 @@ int main() {
 					_getch();
 					break;
 				}
-				
+
 			} while (resp != 8);
 
 
 
 
 			break;
-			//case 5:	 cout << "estamos trabajando en ello " << endl; break;
+			case 5:	
+				objetoDataBase->lectura();
+				objetoDataBase->mostrarNumeroColumnasFilas();
+				objetoDataBase->listarBD();
+				_getch();
+				break;
 			//case 6:	 cout << "estamos trabajando en ello " << endl; break;
-			//case 7:	 cout << "estamos trabajando en ello " << endl; break;
+			case 7:	 
+				cout << "\ Alturas de los arboles" << endl;
+				for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
+					for (int i = 0; i < nombresColumnas.size(); i++) {
+						cout << (*it)->at(i);
+					}cout << endl;
+				}
+				for (int i = 0; i < arboles.size(); i++) {
+					cout << "Altura del arbol numero " << (i + 1) << ": " << endl;
+					cout << arboles.at(i)->altura() << endl;
+				}
+				_getch();
+				break;
 		}
-	} while (r != 7);
+	} while (r != 8);
 
 
 
@@ -270,3 +285,24 @@ int main() {
 //case 6:	 cout << "estamos trabajando en ello " << endl; break;
 //case 7:	 cout << "estamos trabajando en ello " << endl; break;
 //}
+
+//IMPRIMI LOS DATOS
+/*for (int i = 0; i < nombresColumnas.size(); i++) {
+				cout << nombresColumnas.at(i) << " ";
+			}
+			cout << endl;
+			for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
+				for (int i = 0; i < nombresColumnas.size(); i++) {
+					cout << (*it)->at(i) << "   ";
+				}cout << endl;
+			}*/
+
+
+// clase arbol
+	/*void enOrden(Nodo<T> * nodo) {
+		if (nodo != nullptr) {
+			enOrden(nodo->izquierda);
+			cout << nodo->dato << " ";
+			enOrden(nodo->derecha);
+		}
+	}*/
