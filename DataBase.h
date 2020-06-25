@@ -14,21 +14,25 @@ class Database {
 		ArbolAVL<vector<string>*>* abbF;
 		ArbolAVL<vector<string>*>* abbC;
 		vector<vector<string>*>*mibd;
+		vector<vector<vector<string>*>*>*dataBases; //Nuevo
+		vector<string> nombreTablas;
 		ifstream archivo;
 		string cadena;
-		string nombre;
+		string nombreDataBase;
 		char separador;
 		int nCol;
 	public:
 		Database() {
 			nCol = 0;
+			dataBases = new vector<vector<vector<string>*>*>;
 			mibd = new vector<vector<string>*>();
 			abbF = new ArbolAVL<vector<string>*>;
 			abbC = new ArbolAVL<vector<string>*>;
 		}
 		void lectura() {
-			nombre += ".csv";
-			archivo.open(nombre);
+			nombreTablas.push_back(nombreDataBase); 
+			nombreDataBase += ".csv";
+			archivo.open(nombreDataBase);
 			while (getline(archivo, cadena)) {
 				stringstream ss(cadena);
 				dividirCampos(ss);
@@ -45,6 +49,7 @@ class Database {
 			}
 			mibd->push_back(fila);
 			abbF->insertar(fila, compCol1);
+			//dataBases->push_back(mibd);
 		}
 		void mostrarNumeroColumnasFilas() {
 			cout << "Numero de filas: " << mibd->size() << endl;
@@ -67,6 +72,9 @@ class Database {
 			for (int i = 0; i < mibd->size(); ++i) {
 				vector<string>* reg = mibd->at(i);
 				abbF->insertar(reg, compCol1); //Indexando las filas por la columna
+				/*for (int j = 0; j < mibd->at(i)->size(); j++) {
+					abbC->insertar(mibd->at(i)->at(j), compCol1);
+				}*/
 			}
 		}
 		void listarBD() {
@@ -79,10 +87,13 @@ class Database {
 			abbF->borrarTodo();
 		}
 		void setNombre(string nombre) {
-			this->nombre = nombre;
+			nombreDataBase = nombre;
 		}
 		void setSeparador(char separador) {
 			this->separador = separador;
+		}
+		int getNumeroTablas() {
+			return dataBases->size();
 		}
 	
 

@@ -127,17 +127,10 @@ private:
 			return mayor(nodo->derecha);
 	}
 	int minimo(Nodo<T>* nodo) {
-		if (nodo->derecha == nullptr) return nodo->dato;
+		if (nodo->izquierda == nullptr) return nodo->dato;
 		else
-			return mayor(nodo->izquierda);
+			return minimo(nodo->izquierda);
 	}
-	/*void enOrden(Nodo<T> * nodo) {
-		if (nodo != nullptr) {
-			enOrden(nodo->izquierda);
-			cout << nodo->dato << " ";
-			enOrden(nodo->derecha);
-		}
-	}*/
 	void _enOrden(Nodo<T> * nodo, function<void(T)> criterio_impresion) {
 		if (nodo == nullptr)return;
 		else {
@@ -171,7 +164,7 @@ public:
 		return mayor(raiz);
 	}
 	int menor() {
-		return menor(raiz);
+		return minimo(raiz);
 	}
 	int altura() {
 		return _altura(raiz);

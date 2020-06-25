@@ -11,18 +11,22 @@
 using namespace std;
 using namespace System;
 
+//Seleccionar tabla
+int tablaSeleccionada;
+
 int menu() {
 	system("cls");
 	int opcion;
 	cout << "                  Menu" << endl;
 	cout << " 1 - Creacion de Tablas e Insercion de columnas " << endl; // Check
-	cout << " 2 - Insercion de Registros e indexado automatico " << endl; // Check
-	cout << " 3 - Seleccion de datos por columnas " << endl; // Check
-	cout << " 4 - Filtrado de datos por columnas " << endl;
-	cout << " 5 - Ordenamiento de datos por columnas " << endl;
-	cout << " 6 - Exportacion de datos a archivos planos con diferente formato " << endl;
-	cout << " 7 - Altura" << endl;
-	cout << " 8 - Salir" << endl;
+	cout << " 2 - Seleccionar tabla" << endl;
+	cout << " 3 - Insercion de Registros e indexado automatico " << endl; // Check
+	cout << " 4 - Seleccion de datos por columnas " << endl; // Check
+	cout << " 5 - Filtrado de datos por columnas " << endl;
+	cout << " 6 - Ordenamiento de datos por columnas " << endl;
+	cout << " 7 - Exportacion de datos a archivos planos con diferente formato " << endl;
+	cout << " 8 - Altura" << endl;
+	cout << " 9 - Salir" << endl;
 	cout << "     Ingrese opcion: "; cin >> opcion;
 	cout << endl;
 	Console::Clear();
@@ -54,8 +58,12 @@ int main() {
 
 	//Database
 	Database *objetoDataBase = new Database();
+	vector<Database>*arregloDataBase;
 	string nombreArchivo;
 	char separador;
+
+	//Filtros
+	string valor;
 
 
 	int r;
@@ -95,6 +103,19 @@ int main() {
 			}
 			break;
 		case 2:
+			cout << "\t Tablas  registradas" << endl;
+			if (objetoDataBase->getNumeroTablas() == 0) {
+				cout << "No hay tablas registradas!" << endl;
+				_getch();
+			}
+			else {
+				cout << "Hay " << objetoDataBase->getNumeroTablas() << " tablas" << endl;
+				_getch();
+			}
+			_getch();
+			break;
+
+		case 3:
 			cout << "\t Registro" << endl;
 			cout << "Cuantos usuarios desea registrar: ";
 			cin >> numUsuarios;
@@ -117,7 +138,7 @@ int main() {
 			cout << "Todos los usuarios fueron registrados correctamente!" << endl;
 			_getch();
 			break;
-		case 3:
+		case 4:
 			do {
 				system("cls");
 				cout << "\t Seleccion de datos por columnas" << endl;
@@ -144,7 +165,7 @@ int main() {
 			seleccionDeColumnas.clear();
 			_getch();
 			break;
-		case 4:
+		case 5:
 			int resp;
 			do {
 				system("cls");
@@ -156,14 +177,14 @@ int main() {
 				cout << " 5. Finaliza con " << endl;
 				cout << " 6. Está contenido en " << endl;
 				cout << " 7. No está contenido en " << endl;
-				cout << " 8. SALIR" << endl;
+				cout << " 8. Salir" << endl;
 				cout << "Ingrese opcion [puedes elegir 2]: "; cin >> resp;
 				switch (resp) {
 				case 1: // por ahora solo funciona con numeros
 					system("cls");
-					cout << "\t Mayor " << endl;
+					cout << "\t Mayor " << endl;	
 					selecion_de_datos_por_columnas(nombresColumnas); cout << endl;
-					for (int i = 0; i < 2; i++) { //Deben ser dos
+					for (int i = 0; i < 1; i++) { //Deben ser dos
 						cout << "Ingrese el numero de la columna que quiere filtrar: ";
 						cin >> numeroColumna;
 						seleccionDeColumnas.push_back(numeroColumna - 1);
@@ -182,12 +203,42 @@ int main() {
 					break;
 				case 2:
 					system("cls");
-					cout << "Proximamente :D" << endl;
+					cout << "\t Menor " << endl;
+					selecion_de_datos_por_columnas(nombresColumnas); cout << endl;
+					for (int i = 0; i < 1; i++) { //Deben ser dos
+						cout << "Ingrese el numero de la columna que quiere filtrar: ";
+						cin >> numeroColumna;
+						seleccionDeColumnas.push_back(numeroColumna - 1);
+					}
+					arbolInt = new ArbolAVL<int>();
+					for (int i = 0; i < seleccionDeColumnas.size(); i++) {
+						for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
+							int num = atoi((*it)->at(seleccionDeColumnas.at(i)).c_str());
+							arbolInt->insertar(num, crInt);
+						}
+					}
+					cout << "El menor es: " << arbolInt->menor();
+					seleccionDeColumnas.resize(0);
+					arbolInt->destruir();
 					_getch();
 					break;
 				case 3:
 					system("cls");
-					cout << "Proximamente :D" << endl;
+					cout << "\t Igual " << endl;
+					selecion_de_datos_por_columnas(nombresColumnas); cout << endl;
+					for (int i = 0; i < 1; i++) { //Deben ser dos
+						cout << "Ingrese el numero de la columna que quiere filtrar: ";
+						cin >> numeroColumna;
+						seleccionDeColumnas.push_back(numeroColumna - 1);
+					}
+					cout << "Ingrese el valor que quiere buscar en la columna: ";
+					cin >> valor;
+					for (int i = 0; i < seleccionDeColumnas.size(); i++) {
+						/*for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {*/
+							arboles.at(i)->buscar(valor);
+						//}
+					}
+					seleccionDeColumnas.resize(0);
 					_getch();
 					break;
 				case 4:
@@ -218,10 +269,11 @@ int main() {
 
 
 			break;
-			case 5:	
+			case 6:	
 				objetoDataBase->lectura();
 				objetoDataBase->mostrarNumeroColumnasFilas();
-				objetoDataBase->listarBD();
+				//objetoDataBase->listarBD();
+				objetoDataBase->mostrarFilas();
 				_getch();
 				break;
 			//case 6:	 cout << "estamos trabajando en ello " << endl; break;
