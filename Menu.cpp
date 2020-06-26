@@ -63,7 +63,6 @@ int main() {
 	char separador;
 
 	//Filtros
-	string valor;
 
 
 	int r;
@@ -225,23 +224,47 @@ int main() {
 				case 3:
 					system("cls");
 					cout << "\t Igual " << endl;
+					string valor;
 					selecion_de_datos_por_columnas(nombresColumnas); cout << endl;
 					for (int i = 0; i < 1; i++) { //Deben ser dos
 						cout << "Ingrese el numero de la columna que quiere filtrar: ";
 						cin >> numeroColumna;
-						seleccionDeColumnas.push_back(numeroColumna - 1);
+						seleccionDeColumnas.push_back(numeroColumna - 1); // 2
 					}
 					cout << "Ingrese el valor que quiere buscar en la columna: ";
 					cin >> valor;
+					//for (int i = 0; i < seleccionDeColumnas.size(); i++) { // 1
+					//		for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
+					//			if (arboles.at(seleccionDeColumnas.at(i))->_buscar(valor) && (*it)->at(1) == valor) {
+					//				for (int j = 0; j < nombresColumnas.size(); j++) {
+					//					cout << (*it)->at(j) << "   ";
+					//				}cout << endl;
+					//				break;
+					//				//cout << (*it)->at(arboles.at(seleccionDeColumnas.at(i))->getContador());
+					//			}
+					//		}
+					//	
+					//	//arboles.at(seleccionDeColumnas.at(i))->setContador(0);
+					//}
 					for (int i = 0; i < seleccionDeColumnas.size(); i++) {
-						/*for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {*/
-							arboles.at(i)->buscar(valor);
-						//}
+						if (arboles.at(seleccionDeColumnas.at(i))->_buscar(valor)) {
+							int posicion = arboles.at(seleccionDeColumnas.at(i))->getPosicion();
+							for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
+								for (int j = 0; j < nombresColumnas.size(); j++) {
+									cout << (*it)->at(posicion) << " ";
+								}cout << endl;
+
+							}
+						}
 					}
-					seleccionDeColumnas.resize(0);
+					for (int i = 0; i < arboles.size(); i++){
+						arboles.at(i)->setContador(0);
+					}
+					
+					seleccionDeColumnas.clear();
 					_getch();
 					break;
-				case 4:
+			/*	case 4:
 					system("cls");
 					cout << "Proximamente :D" << endl;
 					_getch();
@@ -260,7 +283,7 @@ int main() {
 					system("cls");
 					cout << "Proximamente :D" << endl;
 					_getch();
-					break;
+					break;*/
 				}
 
 			} while (resp != 8);

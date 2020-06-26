@@ -24,6 +24,7 @@ private:
 	};
 	Nodo<T> *raiz;
 	long cantidad;
+	int contador;
 
 	void insertar(Nodo<T> *& nodo, T &dato, function<bool(T, T)> criterio) {
 		if (nodo == nullptr) {
@@ -55,13 +56,52 @@ private:
 		else {
 			if (nodo->dato == dato) {
 				encontrado = true;
-				cout << nodo->dato;
+				cout << nodo->dato << " ";
 			}
 			else if (dato <= nodo->dato) {
 				buscar(nodo->izquierda, dato, encontrado);
+				contador++;
 			}
 			else {
 				buscar(nodo->derecha, dato, encontrado);
+				contador++;
+			}
+		}
+	}
+	bool _buscar2(Nodo<T> *nodo, T dato, bool & encontrado) {
+		if (nodo == nullptr) {
+			encontrado = false;
+		}
+		else {
+			if (nodo->dato == dato) {
+				encontrado = true;
+				return true;
+			}
+			else if (dato <= nodo->dato) {
+				buscar(nodo->izquierda, dato, encontrado);
+				contador++;
+			}
+			else {
+				buscar(nodo->derecha, dato, encontrado);
+				contador++;
+			}
+		}
+	}
+	int _getPosicion(Nodo<T> *nodo, T dato) {
+		if (nodo == nullptr) {
+			return;
+		}
+		else {
+			if (nodo->dato == dato) {
+				return contador;
+			}
+			else if (dato <= nodo->dato) {
+				_getPosicion(nodo->izquierda, dato);
+				contador++;
+			}
+			else {
+				_getPosicion(nodo->derecha, dato);
+				contador++;
 			}
 		}
 	}
@@ -142,7 +182,7 @@ private:
 
 
 public:
-	ArbolAVL() { raiz = nullptr, cantidad = 0; }
+	ArbolAVL() { raiz = nullptr, cantidad = 0, contador = 0; }
 	~ArbolAVL() {};
 	void insertar(T dato, function<bool(T, T)>crit) {
 		insertar(raiz, dato, crit);
@@ -153,6 +193,10 @@ public:
 	void buscar(T dato) {
 		bool encont = false;
 		buscar(raiz, dato, encont);
+	}
+	bool _buscar(T dato) {
+		bool encont = false;
+		return _buscar2(raiz, dato, encont);
 	}
 	void enOrden(function <void(T)>criterio_impresion) {
 		_enOrden(raiz, criterio_impresion);
@@ -168,6 +212,12 @@ public:
 	}
 	int altura() {
 		return _altura(raiz);
+	}
+	int getPosicion() {
+		return contador;
+	}
+	void setContador(int num) {
+		contador = num;
 	}
 
 };

@@ -95,6 +95,5 @@ class Database {
 		int getNumeroTablas() {
 			return dataBases->size();
 		}
-	
 
 };
