@@ -12,26 +12,27 @@ c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(110
 c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(111): warning C4018: '<': no coinciden signed/unsigned
 c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(112): warning C4018: '<': no coinciden signed/unsigned
 c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(132): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(54): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(57): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(65): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(69): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(77): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(82): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(90): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(94): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(103): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(107): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(116): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(266): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(274): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(291): warning C4018: '>': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(302): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(337): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(358): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(490): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(140): warning C4101: 'arregloDataBase': variable local sin referencia
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(123): warning C4101: 'resp': variable local sin referencia
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(46): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(49): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(57): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(61): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(69): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(74): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(82): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(86): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(95): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(99): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(138): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\entidad.h(133): warning C4101: 'opcionRegistro': variable local sin referencia
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(52): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(205): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(213): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(230): warning C4018: '>': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(241): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(276): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(297): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(76): warning C4101: 'arregloDataBase': variable local sin referencia
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(59): warning C4101: 'resp': variable local sin referencia
 c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(116): warning C4700: se utilizó la variable local 'arbolInt' sin inicializar
   Menu.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   TrabajoFInalhito22.vcxproj -> C:\Users\Paolo\source\repos\TrabajoFInalhito22\Debug\TrabajoFInalhito22.exe
