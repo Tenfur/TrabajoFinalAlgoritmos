@@ -34,6 +34,22 @@ int menu() {
 	Console::Clear();
 	return opcion;
 }
+int menuFiltros() {
+	system("cls");
+	int opcion;
+	cout << "\t Filtros de columnas" << endl;
+	cout << " 1. Mayor" << endl;
+	cout << " 2. Menor " << endl;
+	cout << " 3. Igual " << endl;
+	cout << " 4. Inicia con " << endl;
+	cout << " 5. Finaliza con " << endl;
+	cout << " 6. Esta contenido en " << endl;
+	cout << " 7. No esta contenido en " << endl;
+	cout << " 8. Salir" << endl;
+	cout << "Ingrese opcion: ";
+	cin >> opcion;
+	return opcion;
+}
 void listarColum(vector <int> seleccionDeColumnas, list<ListaD<string>*>* indx, string valor, vector<string> nombresColumnas) {
 	for (int i = 0; i < seleccionDeColumnas.size(); i++) { // 1
 		for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
@@ -124,6 +140,7 @@ int main() {
 	vector<Database>*arregloDataBase;
 	string nombreArchivo;
 	char separador;
+	vector<int> columnasSelec;
 
 	//Filtros
 
@@ -151,7 +168,10 @@ int main() {
 				cout << "Ingrese separador: ";
 				cin >> separador;
 				objetoDataBase->setSeparador(separador);
-				cout << "Proceso terminado!" << endl;
+				cout << "Espere por favor..." << endl;
+				objetoDataBase->lectura();
+				system("cls");
+				cout << "Proceso terminado, gracias por la espera!" << endl;
 				_getch();
 			}
 			else if (opcion == 2) {
@@ -169,16 +189,74 @@ int main() {
 			}
 			break;
 		case 2:
-			cout << "\t Tablas  registradas" << endl;
-			if (objetoDataBase->getNumeroTablas() == 0) {
-				cout << "No hay tablas registradas!" << endl;
-				_getch();
-			}
-			else {
-				cout << "Hay " << objetoDataBase->getNumeroTablas() << " tablas" << endl;
-				_getch();
-			}
-			_getch();
+				int opcion2;
+				if (!nombreArchivo.empty()) {
+					do {
+						system("cls");
+						cout << "\t Tablas  registrada" << endl;
+						cout << "Archivo registrado: " << nombreArchivo << endl;
+						cout << "1) Visualizar" << endl;
+						cout << "2) Seleccion de columnas" << endl;
+						cout << "3) Filtros por columnas" << endl;
+						cout << "4) Ordenamientos" << endl;
+						cout << "5) Salir" << endl;
+						cout << "Ingrese opcion: ";
+						cin >> opcion2;
+						if (opcion2 == 1) {
+							system("cls");
+							cout << "\t Tabla " << nombreArchivo << endl;
+							objetoDataBase->mostrarFilas();
+							_getch();
+						}
+						else if (opcion2 == 2) {
+							system("cls");
+							cout << "\t Seleccion de columnas" << endl;
+							int numeroColumnas, columnaSeleccionada;
+							objetoDataBase->imprimirNombreColumnas();
+							cout << endl;
+							cout << "Cuantas columnas desea seleccionar: ";
+							cin >> numeroColumnas;
+							for (int i = 0; i < numeroColumnas; i++) {
+								cout << "Numero de columna: ";
+								cin >> columnaSeleccionada;
+								columnasSelec.push_back(columnaSeleccionada - 1);
+							}
+							system("cls");
+							objetoDataBase->imprimirColumnas(columnasSelec);
+							columnasSelec.clear();
+							_getch();
+						}
+						else if (opcion2 == 3) {
+							system("cls");
+							int num, opcion;
+							cout << "\t Filtros de columnas" << endl;
+							objetoDataBase->imprimirNombreColumnas();
+							cout << endl;
+							for (int i = 0; i < 1; i++) { //Deben ser dos xd 
+								cout << "Ingrese numero de la columna a filtrar: ";
+								cin >> num;
+								columnasSelec.push_back(num - 1);
+							}
+							system("cls");
+							cout << "1) Mayor" << endl;
+							cout << "Ingrese opcion: ";
+							cin >> opcion;
+							if (opcion == 1) {
+								system("cls");
+								cout << "\t Mayor" << endl;
+								//objetoDataBase->filtros(columnasSelec);
+								objetoDataBase->filtroMayor(columnasSelec);
+								columnasSelec.clear();
+								_getch();
+							}
+						
+						}
+					} while (opcion2 != 5);
+				}
+				else {
+					cout << "No hay ningun archivo cargado!" << endl;
+					_getch();
+				}
 			break;
 
 		case 3:
@@ -445,7 +523,7 @@ int main() {
 				_getch();
 				break;
 		}
-	} while (r != 8);
+	} while (r != 9);
 
 
 

@@ -16,6 +16,7 @@ class Database {
 		vector<vector<string>*>*mibd;
 		vector<vector<vector<string>*>*>*dataBases; //Nuevo
 		vector<string> nombreTablas;
+		vector<ArbolAVL<string>*>*arboles;
 		ifstream archivo;
 		string cadena;
 		string nombreDataBase;
@@ -28,7 +29,9 @@ class Database {
 			mibd = new vector<vector<string>*>();
 			abbF = new ArbolAVL<vector<string>*>;
 			abbC = new ArbolAVL<vector<string>*>;
+			arboles = new vector<ArbolAVL<string>*>();
 		}
+
 		void lectura() {
 			nombreTablas.push_back(nombreDataBase); 
 			nombreDataBase += ".csv";
@@ -63,6 +66,63 @@ class Database {
 				cout << endl;
 			}
 		}
+		void imprimirNombreColumnas() {
+			cout << "\t Columnas registradas" << endl;
+			for (int i = 0; i < mibd->at(0)->size(); i++) {
+				cout << (i + 1) << ". " <<  mibd->at(0)->at(i) << "   ";
+			}
+		}
+		void imprimirColumnas(vector <int> columnasSeleccionadas) {
+			for (int i = 0; i < mibd->size(); i++) {
+				for (int j = 0; j < mibd->at(i)->size(); j++) {
+					for (int z = 0; z < columnasSeleccionadas.size(); z++) {
+						if (j == columnasSeleccionadas.at(z)) {
+							cout << mibd->at(i)->at(j) << " ";
+						}
+					}
+					
+
+				}
+				cout << endl;
+			}
+		}
+		void filtros(vector<int> columnasSeleccionadas) {
+			/*ArbolAVL <string> *arbolito;
+			for (int i = 0; i < columnasSeleccionadas.size(); i++) {
+				arbolito = new ArbolAVL<string>();
+				arboles->push_back(arbolito);
+			}*/
+			auto crS = [](string a, string b) { return a.compare(b) < 0; };
+			for (int i = 0; i < mibd->size(); i++) {
+				for (int j = 0; j < mibd->at(i)->size(); j++) {
+					for (int z = 0; z < columnasSeleccionadas.size(); z++) {
+						if (j == columnasSeleccionadas.at(z)) {
+							string dato = mibd->at(i)->at(j);
+							(*arboles)[j]->insertar(dato, crS);
+						}
+					}
+				}
+			}
+		}
+		void filtroMayor(vector<int> columnasSeleccionadas) {
+			ArbolAVL<int> *arbolInt;
+			auto crInt = [](int a, int b) { return a < b; };
+			for (int i = 0; i < mibd->size(); i++) {
+				for (int j = 0; j < mibd->at(i)->size(); j++) {
+					for (int z = 0; z < columnasSeleccionadas.size(); z++) {
+						if (j == columnasSeleccionadas.at(z)) {
+							string dato = mibd->at(i)->at(j);
+							int num = atoi(dato.c_str());
+							arbolInt->insertar(num, crInt);
+						}
+					}
+				}
+			}
+			cout << "El mayor es: " << arbolInt->mayor();
+			arbolInt->destruir();
+			_getch();
+		}
+		
 		void indexarFilaXCol(int nroColumna) {
 			//comparar con lambdas para cualquier columna
 			auto compCol1 = [=](vector<string> *a, vector<string> *b)->bool {

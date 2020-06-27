@@ -1,26 +1,37 @@
 ﻿  Menu.cpp
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(59): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(60): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(72): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(38): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(41): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(49): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(53): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(61): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(66): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(74): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(78): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(87): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(91): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(100): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(188): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(196): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(213): warning C4018: '>': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(224): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(259): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(280): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(412): warning C4018: '<': no coinciden signed/unsigned
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(124): warning C4101: 'arregloDataBase': variable local sin referencia
-c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(107): warning C4101: 'resp': variable local sin referencia
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(62): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(63): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(71): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(76): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(77): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(78): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(96): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(97): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(98): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(110): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(111): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(112): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(132): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(54): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(57): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(65): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(69): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(77): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(82): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(90): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(94): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(103): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(107): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(116): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(266): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(274): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(291): warning C4018: '>': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(302): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(337): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(358): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(490): warning C4018: '<': no coinciden signed/unsigned
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(140): warning C4101: 'arregloDataBase': variable local sin referencia
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\menu.cpp(123): warning C4101: 'resp': variable local sin referencia
+c:\users\paolo\source\repos\trabajofinalhito22\trabajofinalhito22\database.h(116): warning C4700: se utilizó la variable local 'arbolInt' sin inicializar
   Menu.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   TrabajoFInalhito22.vcxproj -> C:\Users\Paolo\source\repos\TrabajoFInalhito22\Debug\TrabajoFInalhito22.exe
