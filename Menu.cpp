@@ -32,10 +32,9 @@ int menu() {
 	Console::Clear();
 	return opcion;
 }
-int menuFiltros() {
+void menuFiltros() {
 	system("cls");
-	int opcion;
-	cout << "\t Filtros de columnas" << endl;
+	cout << "\t Filtrado de datos por columnas" << endl;
 	cout << " 1. Mayor" << endl;
 	cout << " 2. Menor " << endl;
 	cout << " 3. Igual " << endl;
@@ -45,15 +44,12 @@ int menuFiltros() {
 	cout << " 7. No esta contenido en " << endl;
 	cout << " 8. Salir" << endl;
 	cout << "Ingrese opcion: ";
-	cin >> opcion;
-	return opcion;
 }
 void selecion_de_datos_por_columnas(vector<string> nombresColumnas) {
 	for (int i = 0; i < nombresColumnas.size(); i++) {
 		cout << (i + 1) << "." << nombresColumnas.at(i) << "   ";
 	}
 }
-
 int main() {
 	//Listas de listas
 	int resp, opcion, numeroColumnas, numUsuarios, numeroColumna;
@@ -169,15 +165,46 @@ int main() {
 								columnasSelec.push_back(num - 1);
 							}
 							system("cls");
-							cout << "1) Mayor" << endl;
-							cout << "Ingrese opcion: ";
+							menuFiltros();
 							cin >> opcion;
 							if (opcion == 1) {
 								system("cls");
 								cout << "\t Mayor" << endl;
-								//objetoDataBase->filtros(columnasSelec);
 								objetoDataBase->filtroMayor(columnasSelec);
 								columnasSelec.clear();
+								_getch();
+							}
+							else if (opcion == 2) {
+								system("cls");
+								cout << "\t Menor" << endl;
+								objetoDataBase->filtroMenor(columnasSelec);
+								columnasSelec.clear();
+								_getch();
+							}
+							else if (opcion == 3) {
+								system("cls");
+								cout << "\t Igual" << endl;
+
+								_getch();
+							}
+							else if (opcion == 4) {
+								system("cls");
+								cout << "\t Inicia con" << endl;
+								_getch();
+							}
+							else if (opcion == 5) {
+								system("cls");
+								cout << "\t Finaliza con" << endl;
+								_getch();
+							}
+							else if (opcion == 6) {
+								system("cls");
+								cout << "\t Esta contenido en" << endl;
+								_getch();
+							}
+							else if (opcion == 7) {
+								system("cls");
+								cout << "\t No esta contenido en " << endl;
 								_getch();
 							}
 						}
@@ -243,15 +270,7 @@ int main() {
 			int resp;
 			do {
 				system("cls");
-				cout << "\t Filtrado de datos por columnas" << endl;
-				cout << " 1. Mayor " << endl;
-				cout << " 2. Menor " << endl;
-				cout << " 3. Igual " << endl;
-				cout << " 4. Inicia con " << endl;
-				cout << " 5. Finaliza con " << endl;
-				cout << " 6. Esta contenido en " << endl;
-				cout << " 7. No esta contenido en " << endl;
-				cout << " 8. Salir" << endl;
+				menuFiltros();
 				cout << "Ingrese opcion [puedes elegir 2]: "; cin >> resp;
 				if(resp == 1){
 				 // por ahora solo funciona con numeros
@@ -403,8 +422,6 @@ int main() {
 				system("cls");
 				char formatoSeparador;
 				int opcion;
-				string nombreArchivoExportado;
-				ofstream archivo;
 				int opcionRegistro;
 				cout << "\t Exportacion de datos a archivos planos con diferente formato" <<endl;
 				cout << "1) CSV" << endl;
@@ -440,5 +457,3 @@ int main() {
 	} while (r != 9);
 	return 0;
 }
-
-

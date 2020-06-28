@@ -161,12 +161,12 @@ private:
 	//		}
 	//	}
 	//}
-	int mayor(Nodo<T>* nodo) {
+	long mayor(Nodo<T>* nodo) { //Posible solución, un intento más. Cambiar el int por long 
 		if (nodo->derecha == nullptr) return nodo->dato;
 		else
 			return mayor(nodo->derecha);
 	}
-	int minimo(Nodo<T>* nodo) {
+	long minimo(Nodo<T>* nodo) {
 		if (nodo->izquierda == nullptr) return nodo->dato;
 		else
 			return minimo(nodo->izquierda);
@@ -204,10 +204,10 @@ public:
 	void borrarTodo() {
 		destruir(raiz);
 	}
-	int mayor() {
+	long mayor() {
 		return mayor(raiz);
 	}
-	int menor() {
+	long menor() {
 		return minimo(raiz);
 	}
 	int altura() {

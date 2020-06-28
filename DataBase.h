@@ -105,15 +105,15 @@ class Database {
 			}
 		}
 		void filtroMayor(vector<int> columnasSeleccionadas) {
-			ArbolAVL<int> *arbolInt;
-			auto crInt = [](int a, int b) { return a < b; };
+			ArbolAVL<long> *arbolInt = new ArbolAVL<long>();
+			auto crLong = [](long  a, long  b) { return a < b; };
 			for (int i = 0; i < mibd->size(); i++) {
 				for (int j = 0; j < mibd->at(i)->size(); j++) {
 					for (int z = 0; z < columnasSeleccionadas.size(); z++) {
 						if (j == columnasSeleccionadas.at(z)) {
 							string dato = mibd->at(i)->at(j);
-							int num = atoi(dato.c_str());
-							arbolInt->insertar(num, crInt);
+							long num = atol(dato.c_str());
+							arbolInt->insertar(num, crLong);
 						}
 					}
 				}
@@ -122,6 +122,29 @@ class Database {
 			arbolInt->destruir();
 			_getch();
 		}
+		void filtroMenor(vector<int> columnasSeleccionadas) {
+			ArbolAVL<long> *arbolInt = new ArbolAVL<long >();
+			auto crLong = [](long a, long b) { return a < b; };
+			for (int i = 1; i < mibd->size(); i++) {
+				for (int j = 0; j < mibd->at(i)->size(); j++) {
+					for (int z = 0; z < columnasSeleccionadas.size(); z++) {
+						if (j == columnasSeleccionadas.at(z)) {
+							string dato = mibd->at(i)->at(j);
+							long  num = atol(dato.c_str());
+							//cout << num;
+							arbolInt->insertar(num, crLong);
+						}
+					}
+				}
+			}
+			cout << "El menor es: " << arbolInt->menor();
+			arbolInt->destruir();
+			_getch();
+		}
+		void filtroIgual() {
+
+		}
+
 		
 		void indexarFilaXCol(int nroColumna) {
 			//comparar con lambdas para cualquier columna
