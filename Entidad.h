@@ -42,7 +42,7 @@ class Entidad {
 			this->nombresColumnas = nombresColumnas;
 		}
 		//Filtros
-		void listarColum() {
+		void igual() {
 			for (int i = 0; i < seleccionDeColumnas.size(); i++) { 
 				for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
 					if ((*it)->at(seleccionDeColumnas.at(i)) == valor) {
@@ -147,4 +147,5 @@ class Entidad {
 				}
 			}
 		}
+		//ORDENAMIENTOS
 };

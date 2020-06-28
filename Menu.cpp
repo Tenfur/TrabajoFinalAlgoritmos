@@ -184,7 +184,11 @@ int main() {
 							else if (opcion == 3) {
 								system("cls");
 								cout << "\t Igual" << endl;
-
+								string valor;
+								cout << "Ingrese el valor que quiere buscar en la columna: ";
+								cin >> valor;
+								objetoDataBase->filtroIgual(columnasSelec, valor);
+								columnasSelec.clear();
 								_getch();
 							}
 							else if (opcion == 4) {
@@ -328,7 +332,7 @@ int main() {
 					cout << "Ingrese el valor que quiere buscar en la columna: ";
 					cin >> valor;
 					objetoEntidad = new Entidad(seleccionDeColumnas,indx,valor, nombresColumnas);
-					objetoEntidad->listarColum();
+					objetoEntidad->igual();
 					seleccionDeColumnas.clear();
 					delete objetoEntidad;
 					_getch();

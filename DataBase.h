@@ -87,11 +87,6 @@ class Database {
 			}
 		}
 		void filtros(vector<int> columnasSeleccionadas) {
-			/*ArbolAVL <string> *arbolito;
-			for (int i = 0; i < columnasSeleccionadas.size(); i++) {
-				arbolito = new ArbolAVL<string>();
-				arboles->push_back(arbolito);
-			}*/
 			auto crS = [](string a, string b) { return a.compare(b) < 0; };
 			for (int i = 0; i < mibd->size(); i++) {
 				for (int j = 0; j < mibd->at(i)->size(); j++) {
@@ -141,11 +136,18 @@ class Database {
 			arbolInt->destruir();
 			_getch();
 		}
-		void filtroIgual() {
-
+		void filtroIgual(vector<int> columnasSeleccionadas, string valor){ // seleccionDeColumnas, vector, 
+			for (int i = 0; i < columnasSeleccionadas.size(); i++) {
+				for (int j = 1; j < mibd->size(); j++) {
+					if (mibd->at(j)->at(columnasSeleccionadas.at(i)) == valor) {
+						for (int x = 0; x < mibd->at(j)->size(); x++) {
+							cout << mibd->at(j)->at(x) << " ";
+						}cout << endl;
+					}
+				}
+			}
 		}
 
-		
 		void indexarFilaXCol(int nroColumna) {
 			//comparar con lambdas para cualquier columna
 			auto compCol1 = [=](vector<string> *a, vector<string> *b)->bool {
