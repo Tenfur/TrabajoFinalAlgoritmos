@@ -13,7 +13,7 @@
 
 using namespace std;
 using namespace System;
-
+//23:16
 int menu() {
 	system("cls");
 	int opcion;
@@ -194,23 +194,55 @@ int main() {
 							else if (opcion == 4) {
 								system("cls");
 								cout << "\t Inicia con" << endl;
+								char valor;
+								cout << "Ingrese el valor que quiere buscar en la columna: ";
+								cin >> valor;
+								objetoDataBase->filtroInicioCon(columnasSelec, valor);
+								columnasSelec.clear();
 								_getch();
 							}
 							else if (opcion == 5) {
 								system("cls");
 								cout << "\t Finaliza con" << endl;
+								char valor;
+								cout << "Ingrese el valor que quiere buscar en la columna: ";
+								cin >> valor;
+								objetoDataBase->filtroFinalizaCon(columnasSelec, valor);
+								columnasSelec.clear();
 								_getch();
 							}
 							else if (opcion == 6) {
 								system("cls");
 								cout << "\t Esta contenido en" << endl;
+								string valor;
+								cout << "Ingrese el texto que quiere buscar en la columna: ";
+								cin >> valor;
+								objetoDataBase->filtroEstaContenido(columnasSelec, valor);
+								columnasSelec.clear();
 								_getch();
 							}
 							else if (opcion == 7) {
 								system("cls");
 								cout << "\t No esta contenido en " << endl;
+								string valor;
+								cout << "Ingrese el texto que no debe estar incluido en la columnas: ";
+								cin >> valor;
+								objetoDataBase->filtroNoEstaContenido(columnasSelec, valor);
+								columnasSelec.clear();
 								_getch();
 							}
+						}
+						else if (opcion2 == 4) {
+							system("cls");
+							cout << "\t Ordenamientos" << endl;
+							objetoDataBase->imprimirNombreColumnas();
+							cout << endl;
+							int numColum, columOrdenar;
+							cout << "La columna que desea ordenar es numerica[1] o string [0] ?"; cin >> columOrdenar;
+							cout << " Que columnas desea ordenar: "; cin >> numColum;
+							objetoDataBase->ordenamiento(columnasSelec, columOrdenar, numColum);
+							columnasSelec.clear();
+							_getch();
 						}
 					} while (opcion2 != 5);
 				}
@@ -219,7 +251,6 @@ int main() {
 					_getch();
 				}
 			break;
-
 		case 3:
 			cout << "\t Registro" << endl;
 			cout << "Cuantos usuarios desea registrar: ";

@@ -147,19 +147,91 @@ class Database {
 				}
 			}
 		}
-
+		void filtroInicioCon(vector<int> columnasSeleccionadas, char valor) {
+			for (int i = 0; i < columnasSeleccionadas.size(); i++) {
+				for (int j = 1; j < mibd->size(); j++) {
+					string dato = (mibd->at(j)->at(columnasSeleccionadas.at(i)));
+					if (dato[0] == valor) {
+						for (int x = 0; x < mibd->at(j)->size(); x++) {
+							cout << mibd->at(j)->at(x) << " ";
+						}cout << endl;
+					}
+				}
+			}
+		}
+		void filtroFinalizaCon(vector<int> columnasSeleccionadas, char valor) {
+			for (int i = 0; i < columnasSeleccionadas.size(); i++) {
+				for (int j = 1; j < mibd->size(); j++) {
+					string dato = (mibd->at(j)->at(columnasSeleccionadas.at(i)));
+					int pos = dato.length();
+					if (dato[pos - 1] == valor) {
+						for (int x = 0; x < mibd->at(j)->size(); x++) {
+							cout << mibd->at(j)->at(x) << " ";
+						}cout << endl;
+					}
+				}
+			}
+		}
+		void filtroEstaContenido(vector<int> columnasSeleccionadas, string valor) {
+			for (int i = 0; i < columnasSeleccionadas.size(); i++) {
+				for (int j = 1; j < mibd->size(); j++) {
+					string dato = (mibd->at(j)->at(columnasSeleccionadas.at(i)));
+					if (dato.find(valor) != std::string::npos) {
+						for (int x = 0; x < mibd->at(j)->size(); x++) {
+							cout << mibd->at(j)->at(x) << " ";
+						}cout << endl;
+					}
+				}
+			}
+		}
+		void filtroNoEstaContenido(vector<int> columnasSeleccionadas, string valor) {
+			for (int i = 0; i < columnasSeleccionadas.size(); i++) {
+				for (int j = 1; j < mibd->size(); j++) {
+					string dato = (mibd->at(j)->at(columnasSeleccionadas.at(i)));
+					if (!(dato.find(valor) != std::string::npos)) {
+						for (int x = 0; x < mibd->at(j)->size(); x++) {
+							cout << mibd->at(j)->at(x) << " ";
+						}cout << endl;
+					}
+				}
+			}
+		}
+		//Ordenamiento
+		void ordenamiento(vector<int> columnasSeleccionadas, int columOrdenar, int numColum) {
+			vector<ArbolAVL<string>*>arboles;
+			auto crInt = [](int a, int b) { return a < b; };
+			auto crImpresionInt = [](int a) {cout << a << endl; };
+			auto crImpresionString = [](string a) {cout << a << endl; };
+				auto crS = [](string a, string b) { return a.compare(b) < 0; };
+			ArbolAVL<int> *arbolInt = new ArbolAVL<int>();
+			ArbolAVL<string> *arbolString = new ArbolAVL<string>();
+			if (columOrdenar == 1) {
+				for (int i = 1; i < mibd->size(); i++) {
+						int num = atoi(mibd->at(i)->at(numColum - 1).c_str());
+						arbolInt->insertar(num, crInt);
+				}
+					arbolInt->enOrden(crImpresionInt);
+					_getch();
+			}
+			else if (columOrdenar == 0) {
+				for (int i = 1; i < mibd->size(); i++) {
+					string dato = (mibd->at(i)->at(numColum - 1));
+					arbolString->insertar(dato, crS);
+				}
+				arbolString->enOrden(crImpresionString);
+				_getch();
+			}
+			arbolInt->destruir();
+			arboles.clear();
+		}
 		void indexarFilaXCol(int nroColumna) {
 			//comparar con lambdas para cualquier columna
 			auto compCol1 = [=](vector<string> *a, vector<string> *b)->bool {
 				return (a->at(nroColumna).compare(b->at(nroColumna))) < 0;
 			};
-
 			for (int i = 0; i < mibd->size(); ++i) {
 				vector<string>* reg = mibd->at(i);
 				abbF->insertar(reg, compCol1); //Indexando las filas por la columna
-				/*for (int j = 0; j < mibd->at(i)->size(); j++) {
-					abbC->insertar(mibd->at(i)->at(j), compCol1);
-				}*/
 			}
 		}
 		void listarBD() {
