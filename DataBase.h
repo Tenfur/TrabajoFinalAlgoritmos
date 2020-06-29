@@ -14,7 +14,7 @@ class Database {
 		ArbolAVL<vector<string>*>* abbF;
 		ArbolAVL<vector<string>*>* abbC;
 		vector<vector<string>*>*mibd;
-		vector<vector<vector<string>*>*>*dataBases; //Nuevo
+		vector<vector<vector<string>*>*>*dataBases;
 		vector<string> nombreTablas;
 		vector<ArbolAVL<string>*>*arboles;
 		ifstream archivo;
@@ -86,19 +86,6 @@ class Database {
 				cout << endl;
 			}
 		}
-		void filtros(vector<int> columnasSeleccionadas) {
-			auto crS = [](string a, string b) { return a.compare(b) < 0; };
-			for (int i = 0; i < mibd->size(); i++) {
-				for (int j = 0; j < mibd->at(i)->size(); j++) {
-					for (int z = 0; z < columnasSeleccionadas.size(); z++) {
-						if (j == columnasSeleccionadas.at(z)) {
-							string dato = mibd->at(i)->at(j);
-							(*arboles)[j]->insertar(dato, crS);
-						}
-					}
-				}
-			}
-		}
 		void filtroMayor(vector<int> columnasSeleccionadas) {
 			ArbolAVL<long> *arbolInt = new ArbolAVL<long>();
 			auto crLong = [](long  a, long  b) { return a < b; };
@@ -136,7 +123,7 @@ class Database {
 			arbolInt->destruir();
 			_getch();
 		}
-		void filtroIgual(vector<int> columnasSeleccionadas, string valor){ // seleccionDeColumnas, vector, 
+		void filtroIgual(vector<int> columnasSeleccionadas, string valor){ 
 			for (int i = 0; i < columnasSeleccionadas.size(); i++) {
 				for (int j = 1; j < mibd->size(); j++) {
 					if (mibd->at(j)->at(columnasSeleccionadas.at(i)) == valor) {

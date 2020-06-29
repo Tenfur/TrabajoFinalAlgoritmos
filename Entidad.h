@@ -7,6 +7,7 @@
 #include <fstream>
 #include "Listas.h"
 #include "Arbol.h"
+#include "Database.h"
 
 class Entidad {
 	private:
@@ -133,7 +134,7 @@ class Entidad {
 				int opcionRegistro;
 				cout << "Ingrese nombre de su archivo: ";
 				cin >> nombreArchivoExportado;
-				nombreArchivoExportado += ".txt";
+				nombreArchivoExportado += ".csv";
 				archivo.open(nombreArchivoExportado, ios::out);
 				for (int i = 0; i < nombresColumnas.size(); i++) {
 					archivo << nombresColumnas.at(i) << ';';
@@ -146,5 +147,28 @@ class Entidad {
 					archivo << endl;
 				}
 			}
+			else if (opcion == 2) {
+				system("cls");
+				string extension;
+				cout << "Ingrese nombre de su archivo: ";
+				cin >> nombreArchivoExportado;
+				cout << "Ingrese la extension de su archivo: ";
+				cin >> extension;
+				nombreArchivoExportado += extension;
+				archivo.open(nombreArchivoExportado, ios::out);
+				for (int i = 0; i < nombresColumnas.size(); i++) {
+					archivo << nombresColumnas.at(i) << ',';
+				}
+				archivo << endl;
+				for (list<ListaD<string>*> ::iterator it = indx->begin(); it != indx->end(); ++it) {
+					for (int i = 0; i < numeroColumnas; i++) {
+						archivo << (*it)->at(i) << ',';
+					}
+					archivo << endl;
+				}
+			}
+		}
+		void resetearDatos() {
+
 		}
 };

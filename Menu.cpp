@@ -13,7 +13,7 @@
 
 using namespace std;
 using namespace System;
-//23:16
+//23:16 
 int menu() {
 	system("cls");
 	int opcion;
@@ -54,28 +54,29 @@ int main() {
 	//Listas de listas
 	int resp, opcion, numeroColumnas, numUsuarios, numeroColumna;
 	string datoColumna;
-	list<ListaD<string>*>* indx = new list<ListaD<string>*>();
 	string nombreColumna;
 	vector<string> nombresColumnas;
+	list<ListaD<string>*>* indx = new list<ListaD<string>*>();
 
 	//Arboles - vectores de arboles
 	auto crInt = [](int a, int b) { return a < b; };
 	auto crS = [](string a, string b) { return a.compare(b) < 0; };
-	vector<ArbolAVL<string>*>arboles;
 	ArbolAVL <string> *arbolito;
-	vector <int> seleccionDeColumnas; // un vector auxiliar para poder guardar el numero de la columna que desea visualizar en el usuario
 	ArbolAVL <int> *arbolInt;
+	vector <int> seleccionDeColumnas; // un vector auxiliar para poder guardar el numero de la columna que desea visualizar en el usuario
+	vector<ArbolAVL<string>*>arboles;
 
 	//Database
 	Database *objetoDataBase = new Database();
-	vector<Database>*arregloDataBase;
 	string nombreArchivo;
 	char separador;
+	vector<Database>*arregloDataBase;
 	vector<int> columnasSelec;
 
 	//Entidad
 	Entidad *objetoEntidad;
 
+	//Menú (Variable auxiliar) 
 	int r;
 	do {
 		switch (r = menu()) {
@@ -159,7 +160,7 @@ int main() {
 							cout << "\t Filtros de columnas" << endl;
 							objetoDataBase->imprimirNombreColumnas();
 							cout << endl;
-							for (int i = 0; i < 1; i++) { //Deben ser dos xd 
+							for (int i = 0; i < 2; i++) { //Deben ser dos xd 
 								cout << "Ingrese numero de la columna a filtrar: ";
 								cin >> num;
 								columnasSelec.push_back(num - 1);
@@ -482,9 +483,10 @@ int main() {
 					_getch();
 					
 				}
-				else if (opcion == 2) {
-					cout << "Ingrese el tipo de formato de separador:  ";
-					cin >> formatoSeparador;
+				else if (opcionRegistro == 2) {
+					system("cls");
+					cout << "Entendio siga ingresando datos a su columna!" << endl;
+					_getch();
 				}
 				_getch();
 				break;

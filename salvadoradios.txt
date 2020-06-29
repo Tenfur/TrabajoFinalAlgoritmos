@@ -1,4 +1,0 @@
-Nombre;Apellido;Edad;
-Paolo;Cisneros;17;
-Enzo;Livelli;19;
-Daniel;Santillan;21;
